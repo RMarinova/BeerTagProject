@@ -14,13 +14,13 @@ create table beers
 
 create table users
 (
-    user_id   int auto_increment primary key,
-    username  varchar(50) not null,
-    password  varchar(50) not null,
+    user_id    int auto_increment primary key,
+    username   varchar(50) not null,
+    password   varchar(50) not null,
     first_name varchar(50) not null,
     last_name  varchar(50) not null,
-    email     varchar(50) not null,
-    is_admin  boolean     not null
+    email      varchar(50) not null,
+    is_admin   boolean     not null
 );
 
 create table styles
@@ -28,4 +28,15 @@ create table styles
     style_id int auto_increment primary key,
     name     varchar(50) not null
 );
+
+create table users_beers
+(
+    user_id int not null,
+    beer_id int not null,
+    drunk   tinyint(1) not null DEFAULT 0,
+    constraint users_beers_beers_beer_id_fk
+        foreign key (beer_id) references beers (beer_id),
+    constraint users_beers_users_user_id_fk
+        foreign key (user_id) references users (user_id)
+)
 

@@ -48,3 +48,23 @@ VALUES (2, 'English Porter');
 INSERT INTO beers.styles (style_id, name)
 VALUES (3, 'Indian Pale Ale');
 
+INSERT INTO beers.users_beers (user_id, beer_id, drunk)
+VALUES (1, 1, 0);
+
+INSERT INTO beers.users_beers (user_id, beer_id, drunk)
+VALUES (3, 6, 1);
+
+INSERT INTO beers.users_beers (user_id, beer_id, drunk)
+VALUES (3, 5, 1);
+
+INSERT INTO beers.users_beers (user_id, beer_id, drunk)
+VALUES (1, 2, 1);
+
+INSERT INTO beers.users_beers (user_id, beer_id, drunk)
+VALUES (2, 4, 0);
+
+INSERT INTO beers.users_beers (user_id, beer_id, drunk)
+VALUES (2, 3, 1);
+
+INSERT INTO beers.users_beers (user_id, beer_id, drunk)
+VALUES (3, 1, 0);

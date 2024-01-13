@@ -1,8 +1,8 @@
 package com.company.web.springdemo.services;
 
+import com.company.web.springdemo.exceptions.AuthorizationException;
 import com.company.web.springdemo.exceptions.EntityDuplicateException;
 import com.company.web.springdemo.exceptions.EntityNotFoundException;
-import com.company.web.springdemo.exceptions.AuthorizationException;
 import com.company.web.springdemo.models.Beer;
 import com.company.web.springdemo.models.User;
 import com.company.web.springdemo.repositories.BeerRepository;

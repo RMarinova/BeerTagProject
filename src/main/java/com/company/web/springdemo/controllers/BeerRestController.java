@@ -1,21 +1,20 @@
 package com.company.web.springdemo.controllers;
 
+import com.company.web.springdemo.exceptions.AuthorizationException;
 import com.company.web.springdemo.exceptions.EntityDuplicateException;
 import com.company.web.springdemo.exceptions.EntityNotFoundException;
-import com.company.web.springdemo.exceptions.AuthorizationException;
 import com.company.web.springdemo.helpers.AuthenticationHelper;
 import com.company.web.springdemo.helpers.BeerMapper;
 import com.company.web.springdemo.models.Beer;
 import com.company.web.springdemo.models.BeerDto;
 import com.company.web.springdemo.models.User;
 import com.company.web.springdemo.services.BeerService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
-import jakarta.validation.Valid;
 
 import java.util.List;
 

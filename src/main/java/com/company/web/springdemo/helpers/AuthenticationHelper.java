@@ -26,14 +26,14 @@ public class AuthenticationHelper {
                     "The request resource requires authentication.");
         }
         try {
-        String authorizationHeader = headers.getFirst(AUTHORIZATION_HEADER_NAME);
-        String username = getUsername(authorizationHeader);
-        String password = getPassword(authorizationHeader);
+            String authorizationHeader = headers.getFirst(AUTHORIZATION_HEADER_NAME);
+            String username = getUsername(authorizationHeader);
+            String password = getPassword(authorizationHeader);
 
-        User user = service.get(username);
-        if (!user.getPassword().equals(password)) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid authentication");
-        }
+            User user = service.get(username);
+            if (!user.getPassword().equals(password)) {
+                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid authentication");
+            }
 
             return user;
         } catch (EntityNotFoundException e) {
@@ -43,7 +43,7 @@ public class AuthenticationHelper {
 
     private String getUsername(String authorizationHeader) {
         int firstSpaceIndex = authorizationHeader.indexOf(" ");
-        if (firstSpaceIndex == -1){
+        if (firstSpaceIndex == -1) {
             throw new AuthorizationException("Invalid authentication");
         }
         return authorizationHeader.substring(0, firstSpaceIndex);
@@ -51,9 +51,9 @@ public class AuthenticationHelper {
 
     private String getPassword(String authorizationHeader) {
         int firstSpaceIndex = authorizationHeader.indexOf(" ");
-        if (firstSpaceIndex == -1){
+        if (firstSpaceIndex == -1) {
             throw new AuthorizationException("Invalid authentication");
         }
-        return authorizationHeader.substring(firstSpaceIndex+1);
+        return authorizationHeader.substring(firstSpaceIndex + 1);
     }
 }
