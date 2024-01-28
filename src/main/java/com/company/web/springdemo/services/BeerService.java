@@ -1,17 +1,16 @@
 package com.company.web.springdemo.services;
 
 import com.company.web.springdemo.models.Beer;
+import com.company.web.springdemo.models.FilterOptions;
 import com.company.web.springdemo.models.User;
 
 import java.util.List;
 
 public interface BeerService {
 
-    List<Beer> get(String name, Double minAbv, Double maxAbv, Integer styleId, String sortBy, String sortOrder);
+    List<Beer> get(FilterOptions filterOptions);
 
     Beer get(int id);
-
-    Beer getByName(String name);
 
     void create(Beer beer, User user);
 

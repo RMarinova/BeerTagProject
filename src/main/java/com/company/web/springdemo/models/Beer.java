@@ -1,7 +1,8 @@
 package com.company.web.springdemo.models;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -23,17 +24,12 @@ public class Beer {
     @JoinColumn(name = "style_id")
     private Style style;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "created_by")
     private User createdBy;
 
     public Beer() {
-    }
-
-    public Beer(int id, String name, double abv) {
-        this.id = id;
-        this.name = name;
-        this.abv = abv;
     }
 
     public int getId() {
@@ -60,20 +56,20 @@ public class Beer {
         this.abv = abv;
     }
 
-    public User getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(User createdBy) {
-        this.createdBy = createdBy;
-    }
-
     public Style getStyle() {
         return style;
     }
 
     public void setStyle(Style style) {
         this.style = style;
+    }
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
     }
 
     @Override

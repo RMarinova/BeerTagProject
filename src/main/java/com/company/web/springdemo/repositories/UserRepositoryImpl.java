@@ -5,6 +5,7 @@ import com.company.web.springdemo.models.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,16 +15,16 @@ public class UserRepositoryImpl implements UserRepository {
 
     private final SessionFactory sessionFactory;
 
+    @Autowired
     public UserRepositoryImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
     @Override
-    public List<User> getAll() {
+    public List<User> get() {
         try (Session session = sessionFactory.openSession()) {
             Query<User> query = session.createQuery("from User", User.class);
             return query.list();
-
         }
     }
 
@@ -38,17 +39,19 @@ public class UserRepositoryImpl implements UserRepository {
         }
     }
 
+
     @Override
     public User get(String username) {
         try (Session session = sessionFactory.openSession()) {
             Query<User> query = session.createQuery("from User where username = :username", User.class);
             query.setParameter("username", username);
+
             List<User> result = query.list();
             if (result.size() == 0) {
                 throw new EntityNotFoundException("User", "username", username);
             }
-            return result.get(0);
 
+            return result.get(0);
         }
     }
 
@@ -62,4 +65,3 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
 }
-

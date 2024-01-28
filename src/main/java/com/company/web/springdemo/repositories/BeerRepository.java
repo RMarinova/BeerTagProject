@@ -1,12 +1,13 @@
 package com.company.web.springdemo.repositories;
 
 import com.company.web.springdemo.models.Beer;
+import com.company.web.springdemo.models.FilterOptions;
 
 import java.util.List;
 
 public interface BeerRepository {
 
-    List<Beer> get(String name, Double minAbv, Double maxAbv, Integer styleId, String sortBy, String sortOrder);
+    List<Beer> get(FilterOptions filterOptions);
 
     Beer get(int id);
 

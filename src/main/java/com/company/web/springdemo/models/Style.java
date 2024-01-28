@@ -1,7 +1,6 @@
 package com.company.web.springdemo.models;
 
 import jakarta.persistence.*;
-
 import java.util.Objects;
 
 @Entity
@@ -17,11 +16,6 @@ public class Style {
     private String name;
 
     public Style() {
-    }
-
-    public Style(int id, String name) {
-        this.id = id;
-        this.name = name;
     }
 
     public int getId() {
