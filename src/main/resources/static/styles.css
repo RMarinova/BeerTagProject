@@ -1,0 +1,25 @@
+.table {
+    display: table;
+}
+
+.header{
+    display: table-header-group;
+    font-weight: bold;
+}
+
+.rowGroup {
+    display: table-row-group;
+}
+
+.row {
+    display: table-row;
+}
+
+.cell{
+    display: table-cell;
+    width: 25%;
+}
+
+.error {
+    color: red;
+}

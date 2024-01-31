@@ -1,4 +1,4 @@
-package com.company.web.springdemo.controllers;
+package com.company.web.springdemo.controllers.rest;
 
 import com.company.web.springdemo.exceptions.EntityDuplicateException;
 import com.company.web.springdemo.exceptions.EntityNotFoundException;
