@@ -6,9 +6,9 @@ import com.company.web.springdemo.models.User;
 import com.company.web.springdemo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-
-import jakarta.servlet.http.HttpSession;
+import org.springframework.web.server.ResponseStatusException;
 
 @Component
 public class AuthenticationHelper {
@@ -27,28 +27,16 @@ public class AuthenticationHelper {
             throw new AuthorizationException(INVALID_AUTHENTICATION_ERROR);
         }
 
-        String userInfo = headers.getFirst(AUTHORIZATION_HEADER_NAME);
-        String username = getUsername(userInfo);
-        String password = getPassword(userInfo);
-        return verifyAuthentication(username, password);
-    }
-
-    public User tryGetCurrentUser(HttpSession session) {
-        String currentUsername = (String) session.getAttribute("currentUser");
-
-        if (currentUsername == null) {
-            throw new AuthorizationException(INVALID_AUTHENTICATION_ERROR);
-        }
-
-        return userService.get(currentUsername);
-    }
-
-    public User verifyAuthentication(String username, String password) {
         try {
+            String userInfo = headers.getFirst(AUTHORIZATION_HEADER_NAME);
+            String username = getUsername(userInfo);
+            String password = getPassword(userInfo);
             User user = userService.get(username);
+
             if (!user.getPassword().equals(password)) {
                 throw new AuthorizationException(INVALID_AUTHENTICATION_ERROR);
             }
+
             return user;
         } catch (EntityNotFoundException e) {
             throw new AuthorizationException(INVALID_AUTHENTICATION_ERROR);

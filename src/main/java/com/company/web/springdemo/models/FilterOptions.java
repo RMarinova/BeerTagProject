@@ -11,6 +11,10 @@ public class FilterOptions {
     private Optional<String> sortBy;
     private Optional<String> sortOrder;
 
+    public FilterOptions() {
+        this(null, null, null, null, null, null);
+    }
+
     public FilterOptions(
             String name,
             Double minAbv,

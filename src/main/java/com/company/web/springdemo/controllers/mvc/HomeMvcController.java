@@ -7,8 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 public class HomeMvcController {
+
     @GetMapping
-    public String showHomePage(){
-        return "index";
+    public String showHomePage() {
+        return "HomeView";
+    }
+
+    @GetMapping("/about")
+    public String showAboutPage() {
+        return "About";
     }
 }

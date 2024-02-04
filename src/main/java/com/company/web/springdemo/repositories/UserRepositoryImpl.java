@@ -39,7 +39,6 @@ public class UserRepositoryImpl implements UserRepository {
         }
     }
 
-
     @Override
     public User get(String username) {
         try (Session session = sessionFactory.openSession()) {

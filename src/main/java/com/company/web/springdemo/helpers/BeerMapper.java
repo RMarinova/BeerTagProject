@@ -36,4 +36,12 @@ public class BeerMapper {
         return beer;
     }
 
+    public BeerDto toDto(Beer beer) {
+        BeerDto beerDto = new BeerDto();
+        beerDto.setName(beer.getName());
+        beerDto.setAbv(beer.getAbv());
+        beerDto.setStyleId(beer.getStyle().getId());
+        return beerDto;
+    }
+
 }

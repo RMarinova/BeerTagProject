@@ -134,8 +134,6 @@ public class BeerRepositoryImpl implements BeerRepository {
             case "style":
                 orderBy = "style.name";
                 break;
-            default:
-                return "";
         }
 
         orderBy = String.format(" order by %s", orderBy);
