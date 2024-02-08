@@ -1,5 +1,6 @@
 package com.company.web.springdemo.services;
 
+import com.company.web.springdemo.exceptions.EntityDuplicateException;
 import com.company.web.springdemo.exceptions.EntityNotFoundException;
 import com.company.web.springdemo.models.Beer;
 import com.company.web.springdemo.models.User;
@@ -38,6 +39,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void create(User user) {
+        boolean duplicateExists = true;
+        try {
+            repository.get(user.getUsername());
+        } catch (EntityNotFoundException e) {
+            duplicateExists = false;
+        }
+
+        if (duplicateExists) {
+            throw new EntityDuplicateException("User", "username", user.getUsername());
+        }
+
+        repository.create(user);
+    }
+
+    @Override
     public void addBeerToWishList(int userId, int beerId) {
         User user = repository.get(userId);
         if (user.getWishList().stream().anyMatch(b -> b.getId() == beerId)) {
@@ -57,5 +74,4 @@ public class UserServiceImpl implements UserService {
         user.getWishList().removeIf(b -> b.getId() == beerId);
         repository.update(user);
     }
-
 }

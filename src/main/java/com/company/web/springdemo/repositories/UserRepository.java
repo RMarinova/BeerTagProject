@@ -12,6 +12,8 @@ public interface UserRepository {
 
     User get(String username);
 
+    void create(User user);
+
     void update(User user);
 
 }

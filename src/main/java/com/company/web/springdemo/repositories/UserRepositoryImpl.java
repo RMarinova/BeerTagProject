@@ -55,6 +55,15 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public void create(User user) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.persist(user);
+            session.getTransaction().commit();
+        }
+    }
+
+    @Override
     public void update(User user) {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();

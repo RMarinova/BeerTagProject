@@ -29,6 +29,9 @@ public class Beer {
     @JoinColumn(name = "created_by")
     private User createdBy;
 
+    @Column(name = "photo_url")
+    private String photoUrl;
+
     public Beer() {
     }
 
@@ -70,6 +73,14 @@ public class Beer {
 
     public void setCreatedBy(User createdBy) {
         this.createdBy = createdBy;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
     @Override

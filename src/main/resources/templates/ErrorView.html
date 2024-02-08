@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<form th:replace="~{BeerForm.html :: head('Error Page')}"></form>
+<div th:insert="~{fragments/PageFrame :: head(${statusCode})}"></div>
+
 <body>
-<form th:replace="~{BeerForm.html :: header}"></form>
+<div class="error-wrap">
+    <img class="error-bg" src="../static/assets/img/not_found.jpg" th:src="@{/assets/img/not_found.jpg}" alt="">
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="error-content">
+            <h3 class="display-1 fw-bold" th:text="${statusCode}">HTTP Status Code</h3>
+            <p class="fs-3 text-danger">Opps!</p>
+            <p th:unless="${error == null}" class="error" th:text="${error}">Error placeholder</p>
 
-<div class="body-content">
-    <h2 class="label-error" th:text="${statusCode}">HTTP Status Code</h2>
-    <h3 class="error" th:text="${error}">Error placeholder</h3>
+            <a href="HomeView.html" class="btn btn-primary" th:href="@{/}">Go Home</a>
+        </div>
+    </div>
 </div>
-
-<form th:replace="~{BeerForm.html :: footer}"></form>
 </body>
 </html>

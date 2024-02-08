@@ -12,6 +12,8 @@ public interface UserService {
 
     User get(String username);
 
+    void create(User user);
+
     void addBeerToWishList(int userId, int beerId);
 
     void removeFromWishList(int userId, int beerId);

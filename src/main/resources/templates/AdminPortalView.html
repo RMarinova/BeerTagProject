@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div th:insert="~{fragments/PageFrame :: head('Edit Beer')}"></div>
+<div th:insert="~{fragments/PageFrame :: head('Admin Portal')}"></div>
 <body>
 <div th:replace="~{fragments/PageFrame :: navbar}"></div>
 <div class="masthead">
     <div class="container d-flex align-items-center flex-column">
-        <form th:replace="~{fragments/BeerForm :: details('Edit Beer')}"></form>
+        <h2 th:text="#{admin.welcome}">Welcome Admin (design)!</h2>
+        <h2 th:text="${session.currentUser}" th:if="${isAuthenticated}"></h2>
     </div>
 </div>
 <div th:replace="~{fragments/PageFrame :: footer}"></div>
